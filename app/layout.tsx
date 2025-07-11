@@ -25,10 +25,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased size-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased size-full bg-black`}
       >
-        {/* Vertical center guide */}
-        <div className="fixed inset-y-0 left-1/2 w-px -translate-x-1/2 bg-foreground/20 pointer-events-none z-10" />
         {children}
       </body>
     </html>
