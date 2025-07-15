@@ -52,7 +52,8 @@ export default function AsciiExtrudedSvg({
         transform: `translateY(${typeof yOffset === "number" ? `${yOffset}px` : yOffset})`,
       }}
       camera={{ position: [nudgeX, 100 + nudgeY, 1000 + nudgeZ], fov: 60, near: 1, far: 5000 }}
-      gl={{ alpha: false }}
+      gl={{ alpha: false, preserveDrawingBuffer: true }}
+      dpr={Math.max(1, Math.floor(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1))}
     >
       {/* Basic lighting so the ASCII effect has something to shade */}
       <ambientLight intensity={0.5} />
@@ -67,7 +68,7 @@ export default function AsciiExtrudedSvg({
 
       {/* Post-process the whole scene into ASCII */}
       <AsciiRenderer
-        resolution={resolution}
+        resolution={Math.max(0.01, Number(resolution.toFixed(2)))}
         fgColor={fgColor}
         bgColor={bgColor}
         characters={characters}
